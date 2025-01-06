@@ -4,6 +4,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .header {
     min-height: 100vh;
     width: 100%;
@@ -165,67 +169,69 @@ p {
     padding: 10px;
 }
 
+
 .row {
-    margin-top: 5%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    flex-wrap: wrap; 
-    gap: 20px; 
+    align-items: stretch; /* Aligns all cards to the same height */
+    gap: 20px;
 }
 
 .Places-To-Visit-col {
-    flex-basis: 23%; 
+    flex: 1 1 calc(23% - 20px); /* Equal card width */
     display: flex;
-    flex-direction: column; 
-    justify-content: flex-start; 
-    align-items: center; 
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content evenly */
+    align-items: center;
+    text-align: center;
+    max-width: 300px;
+    min-height: 100%; /* Ensures all cards stretch equally */
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
     transition: 0.5s ease;
 }
 
 .Places-To-Visit-col img {
-    width: 100%; 
-    border-radius: 10px; 
-    margin-bottom: 10px; 
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
-h3 {
-    font-size: 18px;
-    font-weight: 600;
+.Places-To-Visit-col h3,
+.Places-To-Visit-col h5 {
     margin: 10px 0;
-}
-
-h5 {
-    font-size: 16px;
-    font-weight: 500;
-    color: #555;
-    margin: 5px 0;
-    text-align: center;
+    font-size: 18px;
 }
 
 .Places-To-Visit-col p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #333;
+    flex-grow: 1; /* Makes text take up equal space */
+    display: flex;
+    align-items: center; /* Vertically centers text */
+    justify-content: center; /* Horizontally centers text */
     text-align: center;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0; /* Remove unnecessary margin */
 }
 
 .Places-To-Visit-col:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .row {
-        flex-direction: column; 
+        flex-direction: column; /* Stack cards vertically */
+        align-items: stretch; /* Stretch cards equally */
     }
 
     .Places-To-Visit-col {
-        flex-basis: 100%; 
+        flex-basis: 100%; /* Cards take full width */
+        max-width: 100%;
     }
 }
 
@@ -595,4 +601,57 @@ body {
     .banner-text h1 {
         font-size: 28px;
     }
+}
+
+
+/* Container for the button and text */
+#scrollToTopContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-align: center; /* Center-align text and button */
+    display: flex;
+    flex-direction: column; /* Stack button and text vertically */
+    align-items: center; /* Ensure the button and text are centered */
+    z-index: 1000;
+}
+
+/* Circular button */
+#scrollToTopBtn {
+    display: flex; /* Use flexbox for centering arrow */
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #007BFF; /* Blue background */
+    border-radius: 50%; /* Circular shape */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Arrow inside the button */
+#scrollToTopBtn .arrow {
+    width: 16px;
+    height: 16px;
+    border-left: 4px solid white;
+    border-top: 4px solid white; /* Top border for arrow */
+    transform: rotate(45deg); /* Rotate to create upward arrow */
+}
+
+/* Hover effect */
+#scrollToTopBtn:hover {
+    background-color: #0056b3; /* Darker blue */
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Text below the button */
+#scrollToTopText {
+    margin-top: 10px; /* Space between button and text */
+    font-size: 14px;
+    color: #007BFF; /* Same blue as the button */
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
 }
